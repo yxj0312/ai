@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    Http::post('https://api.openai.com/v1/chat/completions', [
+    $poem = Http::withToken(config('services.openai.key'))
+    ->post('https://api.openai.com/v1/chat/completions', [
         "model" => "gpt-3.5-turbo",
         "messages" => [
             [
@@ -16,7 +17,11 @@ Route::get('/', function () {
                 "content" => "Compose a poem that explains the concept of recursion in programming."
             ]
         ]
-    ])->json();
+    ])->json('choices.0.message.text');
+
+    return view('welcome', [
+        'poem' => $poem
+    ]);
 
     
 });
