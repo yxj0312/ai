@@ -1,24 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="h-full">
     <head>
-        <title>Laravel</title>
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <meta charset="utf-8">
+        <meta name="viewport" 
+            content="width=devicewidth, user-scalable=no, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>AI Poems</title>
+        <script src="https://cdn.tailwindcss.com"></script>
     </head>
-    <body>
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h1>Lista de posts</h1>
-                    <ul>
-                        @foreach ($posts as $post)
-                            <li>
-                                <a href="{{ route('posts.show', ['post' => $post->id]) }}">
-                                    {{ $post->title }}
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
+    <body class="h-full grid place-item-center p-6">
+        <div class="text-xs font-sans">
+            {!! nl2br($poem) !!}
         </div>
     </body>
