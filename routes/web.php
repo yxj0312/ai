@@ -19,6 +19,10 @@ Route::get('/', function () {
                     ]
                 ]
             ])->json('choices.0.message.content');
+            
+            if ($poem == null) {
+                $poem = "I'm sorry, I don't know how to answer that. Please try again.";    
+            }
 
     return view('welcome', [
         'poem' => $poem
