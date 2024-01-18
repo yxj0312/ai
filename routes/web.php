@@ -13,6 +13,7 @@ Route::get('/', function () {
     $sillyPoem = $chat->reply('Cool, can you make it much, much sillier.');
 
 
+    return view('welcome', ['poem' => $sillyPoem]);
 
     // return view('welcome', ['poem' => $sillyPoem]);
 });
